@@ -28,6 +28,7 @@ const VideoCall = () => {
 
     socket.on('yourID', (id) => {
       setMyId(id);
+      console.log(id);
     });
 
     socket.on('offer', (data) => {

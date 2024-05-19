@@ -8,12 +8,14 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://video-call.onrender.com", // Render पर आपके फ्रंटेंड का URL
     methods: ["GET", "POST"],
   },
 });
 
-app.use(cors());
+app.use(cors({
+  origin: "https://video-call.onrender.com" // Render पर आपके फ्रंटेंड का URL
+}));
 
 io.on('connection', (socket) => {
   console.log('New client connected');
@@ -36,4 +38,5 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(5000, () => console.log('Server is running on port 5000'));
+const PORT = process.env.PORT || 5000;
+server.listen(PORT, () => console.log(`Server is running on port ${PORT}`));

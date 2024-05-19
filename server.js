@@ -8,13 +8,13 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "https://video-call.onrender.com", // Render पर आपके फ्रंटेंड का URL
+    origin: "https://person-video-call.onrender.com", // Render पर आपके फ्रंटेंड का URL
     methods: ["GET", "POST"],
   },
 });
 
 app.use(cors({
-  origin: "https://video-call.onrender.com" // Render पर आपके फ्रंटेंड का URL
+  origin: "https://person-video-call.onrender.com" // Render पर आपके फ्रंटेंड का URL
 }));
 
 io.on('connection', (socket) => {
